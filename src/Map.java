@@ -92,15 +92,15 @@ public class Map {
         }
         else if(move.equals("d"))
         {
-            cs.x += 1;
+            cd.x += 1;
         }
         else if(move.equals("l"))
         {
-            cs.y += -1;
+            cd.y += -1;
         }
         else if(move.equals("r"))
         {
-            cs.y = 1;
+            cd.y = 1;
         }
         else
         {
