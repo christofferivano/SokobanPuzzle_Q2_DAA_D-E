@@ -6,7 +6,7 @@ public class Nodes
     public Nodes parent;
     public State state;
 
-    public Nodes(State state, int cost, Nodes parent, String moving) // Constructor. Fungsinya harus urut
+    public Nodes(State state, Nodes parent,int cost, String moving) // Constructor. Fungsinya harus urut
     {
         this.state = state;
         this.cost = cost ;
