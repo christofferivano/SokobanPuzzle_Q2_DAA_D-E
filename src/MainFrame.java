@@ -1,4 +1,4 @@
-import java.awt.* 
+import java.awt.* ;
 
 
 import java.io.File;
@@ -7,7 +7,9 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.NoSuchElementException;
 
-public class MainFrame extend JFrame 
+import javax.swing.JFrame;
+
+public class MainFrame extends JFrame 
 {
   
   
