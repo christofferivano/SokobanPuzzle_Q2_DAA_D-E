@@ -271,7 +271,7 @@ public class Map {
             {
                 movedMap.tiles.put(v2, "$");
             }
-            else if(nextNextTile.equals("."));
+            else if(nextNextTile.equals("."))
             {
                 movedMap.tiles.put(v2, "*");
             }
