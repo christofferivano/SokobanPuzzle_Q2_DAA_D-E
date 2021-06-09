@@ -168,7 +168,7 @@ public class Map {
             }
             if(nextNextNextTile.equals("#") && !nextNextTile.equals("."))
             {
-                if(nextNextNegativeNormalTileC.equals("#") || nextNextPositiveNormalTileC("#"))
+                if(nextNextNegativeNormalTileC.equals("#") || nextNextPositiveNormalTileC.equals("#"))
                 {
                     return false;
                 }
@@ -366,6 +366,16 @@ public class Map {
             }
         }
         this.stringVersion = updatedStringVersion;
+    }
+
+    public String prettyEdges()
+    {
+        String prettyEdges = "";
+        for(int i = 0; i < this.moves.size(); i++)
+        {
+            prettyEdges = prettyEdges + ", " + this.moves.get(i);
+        }
+        return prettyEdges.substring(2);
     }
 
     @Override public boolean equals(Object other)

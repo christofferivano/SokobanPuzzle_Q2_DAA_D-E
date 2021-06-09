@@ -50,10 +50,11 @@ public class Solution {
         }
         else
         {
-
+            System.out.println("edges: " + this.map.prettyEdges());
+            System.out.println("cost: " + this.map.cost);
         }
+        System.out.println("");
     }
-
 }
 
 
