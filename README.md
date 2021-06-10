@@ -2,14 +2,18 @@
 
 ### Sokoban
 Sokoban is a puzzle video games in which player pushes crates or boxes around in a maze while trying to get them into the storage. Founded in Japan and Created by Hiroyuki Imbayashi in 1981. Sokoban is one of the most popular thought and logic games \
-The game of Sokoban are pretty simple : \
+The game of Sokoban are pretty simple :
 - A level represents a store room, where boxes appear to be randomly placed.
 - Help the warehouse keeper to push the boxes around the maze of the room.
 - The success means that at the end, all boxes are on marked fields.
 - The warehouse keeper can only push a box, never pull, and that just one box may be pushed at a time.
 - The magic of the game is that boxes, which are out of the way on one move, might be in the way on the next move.
 
-You can try the game of sokoban in the link below
+Try the game of sokoban in the link below :\
+https://www.mathsisfun.com/games/sokoban.html
+
+The example of Level 3 Sokoban :\
+![S-L3](./SokobanLevel3.JPG)
 
 
 ### Sokoban Solver
