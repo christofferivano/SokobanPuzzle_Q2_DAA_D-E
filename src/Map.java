@@ -115,11 +115,11 @@ public class Map {
         Coordinate cd = new Coordinate(0, 0);
         if(move.equals("U"))
         {
-            cd.y += -1;
+            cd.y += 1;
         }
         else if(move.equals("D"))
         {
-            cd.y += 1;
+            cd.y += -1;
         }
         else if(move.equals("L"))
         {
