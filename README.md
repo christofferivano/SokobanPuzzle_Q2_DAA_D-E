@@ -14,11 +14,10 @@ The solution of the puzzle itself is the collection of consecutive single step m
 Only the user moves, and he moves to an empty space between the walls.
 The user moves and push a box to a new place and both the user and box doesn’t violate walls and box restriction ( can’t be pulled)
 
-Compiling and running:
-	In the terminal, to compile the file, type make in the directory the .java files were unzipped. To run in the terminal type java SokobanAgent. To test run test or script.
+Compiling and running:\
+In the terminal, to compile the file, type make in the directory the .java files were unzipped. To run in the terminal type java SokobanAgent. To test run test or script.
 
-Commands:
-	Enter a puzzle number and a search algorithm
-	eg.
-		sokoin1.txt BFS
-		sokoin2.txt DFS
+Commands:\
+Enter a puzzle number and a search algorithm eg.\
+sokoin1.txt BFS\
+sokoin2.txt DFS
