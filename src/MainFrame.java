@@ -18,7 +18,7 @@ public class MainFrame extends JFrame
   
   private static final long serialVersionUID = 1L; 
   private Main main; 
-  private JButton submit, next, previ;
+  private JButton solver, next, previ;
   private JTextArea textofAnswer;
   private JPanel panelofQuestion;
   
@@ -32,7 +32,7 @@ public class MainFrame extends JFrame
   private JComboBox choicesMenu; 
   
   //choices for scroll down
-  private String[] search = {"Breadth-First", "Depth-First"};
+  private String[] search = {"","Breadth-First", "Depth-First"};
   
   //selected choices
   private String selectedofQuestion = " ";
@@ -60,9 +60,9 @@ public class MainFrame extends JFrame
   public MainFrame() throws IOException 
   {
 	  init();
-	  QuestionsUpdate("default");
+	  QuestionsUpdate("");
       setSize(800, 600);
-      setTitle("Sokoban Puzzle");
+      setTitle("Sokoban Problem Solver");
       setDefaultCloseOperation(EXIT_ON_CLOSE);
       setResizable(false);
       setVisible(true);
@@ -77,7 +77,7 @@ public class MainFrame extends JFrame
 //	  labelofQuestionField.setText("[insert the filename]");
 //	  labelofQuestionField.setPreferredSize(new Dimension(150, 22));
 //	  labelofQuestionField.setVisible(true);
-//	  submit.setEnabled(true);
+//	  solver.setEnabled(true);
 	  
 	  if(choices.equals("breadth-first") || choices.equals("depth-first"))
 	  	{
@@ -85,14 +85,14 @@ public class MainFrame extends JFrame
 		  		labelofQuestionField.setText("[insert the filename]");
 		  		labelofQuestionField.setPreferredSize(new Dimension(150, 22));
 		  		labelofQuestionField.setVisible(true);
-		  		submit.setEnabled(true);
+		  		solver.setEnabled(true);
 		}
 	  else
 	    {
 		  		labelofQuestion.setText("Please Select a Search Methode from The Right");
 		  		labelofQuestionField.setVisible(false);
 		  		labelofQuestion2.setText("");
-		  		submit.setEnabled(false);
+		  		solver.setEnabled(false);
 	    }
 	  repaint();
 	
@@ -104,7 +104,7 @@ private void init() throws IOException
 	  panelMain.setLayout(new BorderLayout());
 	  panelMain.add(TopPanel(), BorderLayout.NORTH);
 	  panelMain.add(AnswerPanel(), BorderLayout.CENTER);
-//	  panelMain.add(LoadingPanel(, BorderLayout.SOUTH));
+	  panelMain.add(LoadingPanel(), BorderLayout.SOUTH);
 	  addListener();
   }
   
@@ -136,6 +136,9 @@ private void init() throws IOException
 	  PanelTop.setSize(new Dimension (800,100));
 	  PanelTop.setLayout(new GridLayout(2,1));
 	  
+	  Font topPanelFont = new Font("Monserrat", Font.BOLD, 12);
+	  PanelTop.setFont(topPanelFont);
+	  
 	  //add Sokoban Logo on the top of the grid
 	  Image logo = ImageIO.read(new File("sokoban.jpg"));
 	  Image sizeofLogo = logo.getScaledInstance(800, 60 , Image.SCALE_SMOOTH);
@@ -149,11 +152,11 @@ private void init() throws IOException
 	  
 	  //add drop down for choices search menu
 	  choicesMenu = new JComboBox(search);
-	  choicesMenu.setSize(90, 45);
+	  choicesMenu.setSize(120, 60);
 	  choicesMenu.setEditable(false);
 	  
-	  //add submit button to the panelofQuestion
-	  submit = new JButton("Solve");
+	  //add solver button to the panelofQuestion
+	  solver = new JButton("Solve the Problem");
 	  
 	  //add question labels and fields to panelofQuestion
 	  SpringLayout layout = new SpringLayout();
@@ -165,7 +168,7 @@ private void init() throws IOException
 	  
 	  panelofQuestion.add(choicesMenu, BorderLayout.EAST);
 	  panelofQuestion.add(panelofLabel, BorderLayout.CENTER);
-	  panelofQuestion.add(submit, BorderLayout.SOUTH);
+	  panelofQuestion.add(solver, BorderLayout.SOUTH);
 	  PanelTop.add(panelofQuestion);	  
 	return PanelTop;
 	  
@@ -173,6 +176,7 @@ private void init() throws IOException
   
   private void addListener()
   {
+	  //add listener of choices Menu 
 	  choicesMenu.addActionListener(new ActionListener()
 	  		{
 		  		public void actionPerformed(ActionEvent actEvent)
@@ -182,8 +186,11 @@ private void init() throws IOException
 		  			QuestionsUpdate(selectedofQuestion.toLowerCase());
 		  		}
 			  });
-	  submit.addMouseListener(new MouseListener()
+	  
+	  //add listener solver 
+	  solver.addMouseListener(new MouseListener()
 			  {
+		  		//template for each actions of mouse
 		  			public void mouseClicked(MouseEvent arg0) {
 		  				}
 		  			public void mouseEntered(MouseEvent arg0) {
@@ -193,9 +200,10 @@ private void init() throws IOException
 		  			public void mouseReleased(MouseEvent arg0) {
 		  			}
 		  			
+		  			//when the mouse pressed
 		  			public void mousePressed(MouseEvent arg0)
 		  			{
-		  				if(submit.isEnabled())
+		  				if(solver.isEnabled())
 		  				{
 		  					labelofSteps.setVisible(false);
 		  					previ.setVisible(false);
@@ -206,15 +214,67 @@ private void init() throws IOException
 		  			}
 		  			
 			  });
+	  
+	  solver.addActionListener(new ActionListener()
+			  {
+		  			public void actionPerformed(ActionEvent actEvent)
+		  			{
+//		  				try
+//		  				{
+//		  					
+//		  				}
+//		  				catch(FileNotFoundException event)
+//		  				{
+//		  					dispMessage("File: \"" + labelofQuestion.getText() + "\" is not found:(");
+//		  				}
+		  			}
+		  
+			  });
+  }
+  
+  private JPanel LoadingPanel()
+  {
+	  JPanel panelofLoading = new JPanel();
+	  SpringLayout layout = new SpringLayout();
+	  panelofLoading.setLayout(layout);
+	  panelofLoading.setPreferredSize(new Dimension (650, 50));
+	  
+	  labelofLoading = new JLabel();
+	  labelofLoading.setText(" ");
+	  
+	  //set step label 
+	  labelofSteps = new JLabel();
+	  labelofSteps.setText("Show Steps: ");
+	  labelofSteps.setVisible(false);
+	  
+	  //previ and next button 
+	  previ = new JButton("Previous");
+	  previ.setVisible(false);
+	  
+	  next = new JButton("Next");
+	  next.setVisible(false);
+	  
+	  panelofLoading.add(labelofLoading);
+	  panelofLoading.add(labelofSteps);
+	  
+	  panelofLoading.add(previ);
+	  panelofLoading.add(next);
+	  
+	return panelofLoading;
+	  
   }
   
   private void dispSolveMessage(String message) 
   {
 	// TODO Auto-generated method stub
 	  labelofLoading.setText("Solving the Puzzle using " + message + " search .... ");
-	  
-	
-}
+  }
+  
+  private void dispMessage(String message)
+  {
+	  labelofLoading.setText(message);
+	  repaint();
+  }
 
 
 private void setLayoutBound(SpringLayout layout, JPanel labelPanel) 
@@ -222,16 +282,15 @@ private void setLayoutBound(SpringLayout layout, JPanel labelPanel)
 		layout.putConstraint(SpringLayout.WEST, labelofQuestion,
               7, SpringLayout.WEST, labelPanel);
 		layout.putConstraint(SpringLayout.NORTH, labelofQuestion,
-              19, SpringLayout.NORTH, labelPanel);
+              13, SpringLayout.NORTH, labelPanel);
 		layout.putConstraint(SpringLayout.WEST, labelofQuestionField,
-              1, SpringLayout.EAST, labelofQuestion);
+              2, SpringLayout.EAST, labelofQuestion); //positions fill the file name
 		layout.putConstraint(SpringLayout.NORTH, labelofQuestionField,
-              17, SpringLayout.NORTH, labelPanel);
+              11, SpringLayout.NORTH, labelPanel);//fill the file name
 		layout.putConstraint(SpringLayout.WEST, labelofQuestion2,
-              1, SpringLayout.EAST, labelofQuestionField);
+              2, SpringLayout.EAST, labelofQuestionField);
 		layout.putConstraint(SpringLayout.NORTH, labelofQuestion2,
-              14, SpringLayout.NORTH, labelPanel);
+              12, SpringLayout.NORTH, labelPanel);
   }
   
 }
-
