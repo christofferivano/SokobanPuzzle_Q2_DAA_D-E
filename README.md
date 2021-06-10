@@ -1,5 +1,8 @@
 # SokobanPuzzle_Q2_DAA_D-E
 
+### Sokoban
+Sokoban is a puzzle video games in which player pushes crates or boxes around in a maze while trying to get them into the storage. Founded in Japan and Created by Hiroyuki Imbayashi in 1981 which are known worldwide untill nowadays
+
 The Sokoban Puzzle Solver is a solver based on an input text file which consists of few lines indicating the coordinates of walls, boxes, and storage position. The symbols are :
 ```
 “#” stands for wall
