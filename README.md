@@ -9,7 +9,11 @@ The game of Sokoban are pretty simple : \
 - The warehouse keeper can only push a box, never pull, and that just one box may be pushed at a time.
 - The magic of the game is that boxes, which are out of the way on one move, might be in the way on the next move.
 
-You can try the game of sokoban in the link below
+Try the game of sokoban in the link below :\
+https://www.mathsisfun.com/games/sokoban.html
+
+The example of Level 3 Sokoban :\
+![S-L3](./SokobanLevel3.JPG)
 
 
 ### Sokoban Solver
