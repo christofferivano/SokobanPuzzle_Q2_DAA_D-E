@@ -134,26 +134,28 @@ public class Main
 					PrintWriter printout = new PrintWriter (new FileWriter("output.txt"), true);
 					printout.write(output);
 					printout.close();
-				} catch (IOException ex){
+				} 
+				catch (IOException ex)
+				{
 					System.err.println("FileWritter has been error :(");
 					System.err.println(ex);
-					}
-				
 				}
+				
+			}
 			print ("Check the ouput.txt");
-//			try 
-//			{
-//				PrintWriter printout = new PrintWriter (new FileWriter("output.txt"), true);
-//				printout.write(output);
-//				printout.close();
-//			} 
-//			catch (IOException ex)
-//			{
-//				System.err.println("FileWritter has been error :(");
-//				System.err.println(ex);
-//			}
+			try 
+			{
+				PrintWriter printout = new PrintWriter (new FileWriter("output.txt"), true);
+				printout.write(output);
+				printout.close();
+			} catch (IOException ex)
+				{
+					System.err.println("FileWritter has been error :(");
+					System.err.println(ex);
+				}
 		}
-		else {
+		else 
+		{
 			String userin;
 			print("");
 			print("\tWelcome to Sokoban Puzzle Solver\t");
@@ -174,7 +176,7 @@ public class Main
 			try {
 				while((userin = stdIn.readLine()) != null)
 				{
-					Map mapUser;
+					Map mapUser = null;
 					Solution solutionUser = null;
 					String algoUser = "";
 					String mapUserstring = "";
@@ -229,10 +231,10 @@ public class Main
 									solution.print();
 								}
 							}
-						}
+				    }
 					else 
 					{
-						String[] userinp = userin.split();
+						String[] userinp = userin.split(" ");
 						mapUserstring = userinp[0];
 						algoUser = userinp[1];
 						if(algoUser.equalsIgnoreCase("bfs"))
@@ -248,18 +250,12 @@ public class Main
 					}
 							
 				}
-			}catch (IOException ex){
+			}
+			catch (IOException ex)
+			{
 				System.err.println("Invalid Input :(");
 				System.err.println(ex);
 			}
 		}
-			
-			
-			
-			
 		
-	}
-	
-
-
-}
+	}}
